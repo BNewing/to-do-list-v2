@@ -44,6 +44,77 @@
 /* 0 */
 /***/ function(module, exports) {
 
+	localStorage.setItem("itemsCounter", 0);
+	var elementIdAssigner = localStorage.getItem("itemsCounter")
+	var pendingIdAssigner = elementIdAssigner * 1000;
+	var listItemTag;
+
+	//var checkIfcontent = require('./check-if-content.js')
+
+	function checkIfContent(){
+		var textInput = document.getElementById("listItem").value;
+		if(textInput === ""){
+			document.getElementById('emptyFieldAlert').innerHTML = "You need to type something into the box first!";
+		}
+		else{
+			document.getElementById('emptyFieldAlert').innerHTML = "";
+			collectContent();
+		}
+	}
+
+	function collectContent(){
+		var length = document.getElementsByTagName("button").length;
+		if(length <=9) {
+			elementIdAssigner++;
+			createListItem(elementIdAssigner);
+			localStorage.setItem("itemsCounter", elementIdAssigner);
+			document.getElementById("itemEntry").reset();
+		}
+		else{
+			alert("You've already got ten on the list");
+		}
+	}
+
+	function createListItem(elementId){
+		console.log(elementId);
+		var textInput = document.getElementById("listItem").value;
+		listItemTag = document.createElement("li");
+		listItemTag.setAttribute("class", "item");
+		createListItemDeleteButton(listItemTag, elementId);
+		createListItemStatusLabel(listItemTag, elementId);
+		var listItemNode = document.createTextNode(textInput);
+		var unorderedList = document.getElementById("list");
+		listItemTag.appendChild(listItemNode);
+		listItemTag.setAttribute("id", elementId);
+		unorderedList.appendChild(listItemTag);
+		enableDragFunctionality(listItemTag);
+	}
+
+	function createListItemDeleteButton(elementId) {
+		var deleteButton = document.createElement("button");
+		var buttonContent = document.createTextNode("X");
+		deleteButton.setAttribute("id", elementId*1000);
+		deleteButton.appendChild(buttonContent);
+		listItemTag.appendChild(deleteButton);
+		deleteButton.onclick = deleteItem;
+	}
+
+	function createListItemStatusLabel(elementId){
+		var labelText = document.createTextNode("Pending");
+		var pendingLabel = document.createElement("label");
+		pendingLabel.appendChild(labelText);
+		pendingLabel.setAttribute("id", elementId*100000)
+		listItemTag.appendChild(pendingLabel);
+		pendingLabel.onclick = changeStatus;
+	}
+
+	window.checkIfContent = checkIfContent;
+	window.createListItemStatusLabel = createListItemStatusLabel;
+	window.createListItemDeleteButton = createListItemDeleteButton;
+	window.createListItem = createListItem;
+	window.collectContent = collectContent;
+
+
 	function enableDragFunctionality(listItem){
 		listItem.addEventListener("dragstart", function(ev){
 			ev.dataTransfer.setData("Text", ev.target.id);
@@ -164,74 +235,6 @@
 
 	window.deleteItem = deleteItem;
 	window.changeStatus = changeStatus;
-
-
-	localStorage.setItem("itemsCounter", 0);
-	var elementIdAssigner = localStorage.getItem("itemsCounter")
-	var pendingIdAssigner = elementIdAssigner * 1000;
-	var listItemTag;
-
-	function checkIfContent(){
-		var textInput = document.getElementById("listItem").value;
-		if(textInput === ""){
-			document.getElementById('emptyFieldAlert').innerHTML = "You need to type something into the box first!"
-		}
-		else{
-			document.getElementById('emptyFieldAlert').innerHTML = "";
-			collectContent();
-		}
-	}
-
-	function collectContent(){
-		var length = document.getElementsByTagName("button").length;
-		if(length <=9) {
-			elementIdAssigner++;
-			createListItem(elementIdAssigner);
-			localStorage.setItem("itemsCounter", elementIdAssigner);
-			document.getElementById("itemEntry").reset();
-		}
-		else{
-			alert("You've already got ten on the list");
-		}
-	}
-
-	function createListItem(elementId){
-		var textInput = document.getElementById("listItem").value;
-		listItemTag = document.createElement("li");
-		listItemTag.setAttribute("class", "item");
-		createListItemDeleteButton(listItemTag, elementId);
-		createListItemStatusLabel(listItemTag, elementId);
-		var listItemNode = document.createTextNode(textInput);
-		var unorderedList = document.getElementById("list");
-		listItemTag.appendChild(listItemNode);
-		listItemTag.setAttribute("id", elementId);
-		unorderedList.appendChild(listItemTag);
-		enableDragFunctionality(listItemTag);
-	}
-
-	function createListItemDeleteButton(elementId) {
-		var deleteButton = document.createElement("button");
-		var buttonContent = document.createTextNode("X");
-		deleteButton.setAttribute("id", elementId*1000);
-		deleteButton.appendChild(buttonContent);
-		listItemTag.appendChild(deleteButton);
-		deleteButton.onclick = deleteItem;
-	}
-
-	function createListItemStatusLabel(elementId){
-		var labelText = document.createTextNode("Pending");
-		var pendingLabel = document.createElement("label");
-		pendingLabel.appendChild(labelText);
-		pendingLabel.setAttribute("id", elementId*100000)
-		listItemTag.appendChild(pendingLabel);
-		pendingLabel.onclick = changeStatus;
-	}
-
-	window.checkIfContent = checkIfContent;
-	window.createListItemStatusLabel = createListItemStatusLabel;
-	window.createListItemDeleteButton = createListItemDeleteButton;
-	window.createListItem = createListItem;
-	window.collectContent = collectContent;
 
 
 /***/ }
