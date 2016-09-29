@@ -3,6 +3,10 @@ var pendingIdAssigner = elementIdAssigner * 1000;
 
 
 
+var mouseDragAndDrop = require('./mouseDragAndDrop.js');
+var touchDragAndDrop = require('./touchDragAndDrop.js');
+
+
 
 
 
@@ -53,7 +57,7 @@ function createListItem(elementId){
 	listItemTag.appendChild(listItemNode);
 	listItemTag.setAttribute("id", elementId);
 	unorderedList.appendChild(listItemTag);
-	enableDragFunctionality(listItemTag);
+	touchDragAndDrop.enableDragFunctionality(listItemTag);
 }
 
 function createListItemDeleteButton(elementId, listItemTag) {
@@ -78,97 +82,20 @@ function createListItemStatusLabel(elementId, listItemTag){
 
 
 
+
+
+
+
+
+
+
 /*BASIC OPERATIONS?*/
 
-function enableDragFunctionality(listItem){
-	listItem.addEventListener("dragstart", function(ev){
-		ev.dataTransfer.setData("Text", ev.target.id);
-	});
-	listItem.setAttribute("draggable", "true");
-	listItem.addEventListener("touchstart", function(ev){
-		ev.stopPropagation();
-		touchMove(li)
-	}, false);
-}
-
-function touchMove(li){
-	li.addEventListener("touchmove", function(ev){
-		ev.preventDefault();
-		ev.stopPropagation();
-		var touch = ev.targetTouches[0];
-		var ul = document.getElementsByTagName("li");
-		li.style.left = parseInt(touch.clientX) -touch.offsetX +'px';
-		li.style.top = parseInt(touch.clientY) - touch.offsetY + 'px';
-		this.style.position = "absolute";
-		this.style.left = "0px"
-		this.style.top = "0px"
-		touchEnd(li);
-	}, false);
-}
-
-function touchEnd(li){
-	li.addEventListener("touchend", function(ev){
-	ev.stopPropagation();
-	var changedTouch = ev.changedTouches[0];
-	var x = document.elementFromPoint(changedTouch.clientX, changedTouch.clientY);
-	console.info('error here', x, changedTouch);
-	if(x.id === "div1" || x.id === "div2" || x.id === "div3"){
-	    x.appendChild(this);
-	}
-	else{
-		var node = ev.target;
-		var parent = node.parentElement;
-		parent.appendChild(node);
-	}
-	this.style.position = "relative";
-	this.style.left = "0px"
-	this.style.top = "0px"
-	automaticLabelAssignment();
-	}, false);
-}
-
-function allowDrop(ev){
-    ev.preventDefault();
-}
-
-function drag(ev){
-    ev.dataTransfer.setData("text", ev.target.id);
-}
-
-function drop(ev){
-    ev.preventDefault();
-    var data = ev.dataTransfer.getData("text");
-    ev.target.appendChild(document.getElementById(data));
-    automaticLabelAssignment();
-}
-
-var automaticLabelAssignment = require('./automaticLabelAssignment.js');
-window.automaticLabelAssignment;
 
 
-// function automaticLabelAssignment(){
-// 	var div3 = document.getElementById("div3");
-//     var div3Items = div3.getElementsByTagName("label");
-//     var i;
-// 		for (i = 0; i <	div3Items.length; i++) {
-//    		div3Items[i].innerHTML = "Done";
-//    		div3Items[i].style.backgroundColor = '#99ff33'
-//    	}
-//    	var div1 = document.getElementById("div1");
-//     var div1Items = div1.getElementsByTagName("label");
-//     var j;
-// 	for (j = 0; j <	div1Items.length; j++) {
-//    		div1Items[j].innerHTML = "Pending";
-//    		div1Items[j].style.backgroundColor = '#ffd27f'
-//    	}
-//    	  var div2 = document.getElementById("div2");
-//     var div2Items = div2.getElementsByTagName("label");
-//     var k;
-// 	for (k = 0; k <	div2Items.length; k++) {
-//    		div2Items[k].innerHTML = "Pending";
-//    		div2Items[k].style.backgroundColor = '#ffd27f'
-//    	}
-// }
+
+
+
 
 
 
@@ -199,16 +126,5 @@ function changeStatus(){
 
 
 window.checkIfContent = checkIfContent;
-window.createListItemStatusLabel = createListItemStatusLabel;
-window.createListItemDeleteButton = createListItemDeleteButton;
-window.createListItem = createListItem;
-window.collectContent = collectContent;
-window.drop = drop;
-window.automaticLabelAssignment = automaticLabelAssignment;
-window.drag = drag;
-window.allowDrop = allowDrop;
-window.touchEnd = touchEnd;
-window.touchMove = touchMove;
-window.enableDragFunctionality = enableDragFunctionality;
-window.deleteItem = deleteItem;
-window.changeStatus = changeStatus;
+window.drop = mouseDragAndDrop.drop;
+window.allowDrop = mouseDragAndDrop.allowDrop;
