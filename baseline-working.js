@@ -168,16 +168,17 @@ function changeStatus(){
 }
 
 
-// window.createListItemStatusLabel = createListItemStatusLabel;
-// window.createListItemDeleteButton = createListItemDeleteButton;
-// window.createListItem = createListItem;
-// window.collectContent = collectContent;
-// window.drop = drop;
-// window.automaticLabelAssignment = automaticLabelAssignment;
-// window.drag = drag;
-// window.allowDrop = allowDrop;
-// window.touchEnd = touchEnd;
-// window.touchMove = touchMove;
-// window.enableDragFunctionality = enableDragFunctionality;
-// window.deleteItem = deleteItem;
-// window.changeStatus = changeStatus;
+window.checkIfContent = checkIfContent;
+window.createListItemStatusLabel = createListItemStatusLabel;
+window.createListItemDeleteButton = createListItemDeleteButton;
+window.createListItem = createListItem;
+window.collectContent = collectContent;
+window.drop = drop;
+window.automaticLabelAssignment = automaticLabelAssignment;
+window.drag = drag;
+window.allowDrop = allowDrop;
+window.touchEnd = touchEnd;
+window.touchMove = touchMove;
+window.enableDragFunctionality = enableDragFunctionality;
+window.deleteItem = deleteItem;
+window.changeStatus = changeStatus;
