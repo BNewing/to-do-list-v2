@@ -1,18 +1,12 @@
 module.exports = {
-  entry: "./src/main.js",
-  output: {
-    filename: "./app/[name].js"
-  },
-  module: {
-    loaders: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: "babel-loader"
-      }
-    ]
-  },
-  resolve: {
-    extensions: ["", ".js"]
-  },
+	entry: "./src/entryPoint.js",
+	output: {
+		path: __dirname,
+		filename: "./app/bundle.js"
+	},
+	module: {
+		loaders: [
+			{ test: /\.css$/, loader: "style!css" }
+		]
+	}
 }
