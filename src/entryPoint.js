@@ -1,23 +1,10 @@
 localStorage.setItem("itemsCounter", 0);
 var pendingIdAssigner = elementIdAssigner * 1000;
-
+var elementIdAssigner = localStorage.getItem("itemsCounter")
 
 
 var mouseDragAndDrop = require('./mouseDragAndDrop.js');
 var touchDragAndDrop = require('./touchDragAndDrop.js');
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 function checkIfContent(){
@@ -31,7 +18,6 @@ function checkIfContent(){
 	}
 }
 
-var elementIdAssigner = localStorage.getItem("itemsCounter")
 
 function collectContent(){
 	var length = document.getElementsByTagName("button").length;
@@ -77,30 +63,6 @@ function createListItemStatusLabel(elementId, listItemTag){
 	listItemTag.appendChild(pendingLabel);
 	pendingLabel.onclick = changeStatus;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-/*BASIC OPERATIONS?*/
-
-
-
-
-
-
-
-
-
-
-
 
 
 function deleteItem(){
