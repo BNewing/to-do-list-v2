@@ -1,4 +1,4 @@
-var css = require('../static/index.styl')
+var css = require('../static/main.styl')
 
 localStorage.setItem("itemsCounter", 0);
 var pendingIdAssigner = elementIdAssigner * 1000;
