@@ -6,7 +6,8 @@ module.exports = {
 	},
 	module: {
 		loaders: [
-			{ test: /\.css$/, loader: "style!css" }
+			{ test: /\.css$/, loader: "style!css" },
+			{ test: /\.styl$/, loader: "style-loader!css-loader!stylus-loader" }
 		]
 	}
 }
