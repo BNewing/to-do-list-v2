@@ -1,10 +1,11 @@
+smallerDevices = 'screen and (max-width: 815px)'
+
 ul
 	padding-left:0
 
 li
 	color: textColor
-	letter-spacing: 0.25px
-	line-height: 1.5
+	line-height: 3/2
 	background-color: listItemColor
 	border-radius: 5px
 	border: solid 1px #000000
@@ -23,22 +24,16 @@ button
 	margin: 5px
   top: 2px
   right: 2px
+	@media smallerDevices
+		padding-top: 5px
+		padding-bottom: 5px
 
 label
 	float: right
 	background: labelColor
 	border-radius: 5px
 	border: solid 1px borderColor
-  top: 5px
-  right: 35px
-  padding: 2px
-  z-index: 1
-
-
-@media (max-width: 815px)
-	button
-		padding-top: 5px
-		padding-bottom: 5px
-
-	label
-	  right: 39px
+	top: 5px
+	right: 35px
+	padding: 2px
+	z-index: 1

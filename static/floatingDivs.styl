@@ -1,3 +1,5 @@
+smallerDevices = 'screen and (max-width: 815px)'
+
 div.topthird
 	float: left
 	width: 27.5%
@@ -7,6 +9,11 @@ div.topthird
 	border-radius:25px
 	padding-bottom: 1%
 	background-color: textBubble1Color
+	@media smallerDevices
+		padding:10px
+		float: center
+		width: 90%
+		margin: 25px
 
 div.links
 	float: left
@@ -25,10 +32,3 @@ div.homepageLinks
 	background-color: textBubble1Color
 	padding: 1%
 	margin: 1%
-
-@media (max-width: 815px)
-	div.topthird
-		width: 90%
-		float: center
-		margin: 25px
-		padding: 10px
