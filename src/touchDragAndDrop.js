@@ -1,52 +1,57 @@
+var interact =require('interact.js');
+
 var automaticLabelAssignment = require('./automaticLabelAssignment.js');
 
-module.exports = {
-	enableDragFunctionality: function(listItem){
-		listItem.addEventListener("dragstart", function(ev){
-			ev.dataTransfer.setData("Text", ev.target.id);
-		});
-		listItem.setAttribute("draggable", "true");
-		listItem.addEventListener("touchstart", function(ev){
-			ev.stopPropagation();
-			touchMove(li)
-		}, false);
-	},
+var dragMoveListener = function (event) {
+	var target = event.target,
+			x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
+			y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
 
-	touchMove: function(li){
-		li.addEventListener("touchmove", function(ev){
-			ev.preventDefault();
-			ev.stopPropagation();
-			var touch = ev.targetTouches[0];
-			var ul = document.getElementsByTagName("li");
-			li.style.left = parseInt(touch.clientX) -touch.offsetX +'px';
-			li.style.top = parseInt(touch.clientY) - touch.offsetY + 'px';
-			this.style.position = "absolute";
-			this.style.left = "0px"
-			this.style.top = "0px"
-			touchEnd(li);
-		}, false);
-	},
+	target.style.webkitTransform =
+	target.style.transform =
+		'translate(' + x + 'px, ' + y + 'px)';
 
-	touchEnd: function(li){
-		li.addEventListener("touchend", function(ev){
-		ev.stopPropagation();
-		var changedTouch = ev.changedTouches[0];
-		var x = document.elementFromPoint(changedTouch.clientX, changedTouch.clientY);
-		console.info('error here', x, changedTouch);
-		if(x.id === "div1" || x.id === "div2" || x.id === "div3"){
-		    x.appendChild(this);
-		}
-		else{
-			var node = ev.target;
-			var parent = node.parentElement;
-			parent.appendChild(node);
-		}
-		this.style.position = "relative";
-		this.style.left = "0px"
-		this.style.top = "0px"
-		automaticLabelAssignment();
-		}, false);
-	}
+	target.setAttribute('data-x', x);
+	target.setAttribute('data-y', y);
 };
 
+module.exports = {
 
+		draggable: interact('.draggable')
+		  .draggable({
+		    inertia: true,
+		    restrict: {
+		      restriction: "parent",
+		      endOnly: true,
+		      elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
+		    },
+		    autoScroll: true,
+		    onmove: dragMoveListener,
+		  }),
+
+		dropzone: interact('.dropzone').dropzone({
+			  overlap: 0.50,
+			  ondropactivate: function (event) {
+			    event.target.classList.add('drop-active');
+			  },
+
+		  ondragenter: function (event) {
+		    var draggableElement = event.relatedTarget,
+		        dropzoneElement = event.target;
+		    dropzoneElement.classList.add('drop-target');
+		  },
+
+		  ondragleave: function (event) {
+		    event.target.classList.remove('drop-target');
+		  },
+
+		  ondrop: function (event) {
+		    event.relatedTarget.textContent = 'Dropped';
+		  },
+
+		  ondropdeactivate: function (event) {
+		    event.target.classList.remove('drop-active');
+		    event.target.classList.remove('drop-target');
+		  }
+		})
+};
