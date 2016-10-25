@@ -1,6 +1,5 @@
 var interact =require('interact.js');
 
-var automaticLabelAssignment = require('./automaticLabelAssignment.js');
 
 var dragMoveListener = function (event) {
 	var target = event.target,
@@ -21,16 +20,25 @@ module.exports = {
 		  .draggable({
 		    inertia: true,
 		    restrict: {
-		      restriction: "parent",
 		      endOnly: true,
 		      elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
 		    },
 		    autoScroll: true,
 		    onmove: dragMoveListener,
+
+				onend: function (event) {
+					var textEl = event.target.querySelector('p');
+
+					textEl && (textEl.textContent =
+						'moved a distance of '
+						+ (Math.sqrt(event.dx * event.dx +
+												 event.dy * event.dy)|0) + 'px');
+					}
 		  }),
 
 		dropzone: interact('.dropzone').dropzone({
-			  overlap: 0.50,
+				accept: '.draggable',
+			  overlap: 0.75,
 			  ondropactivate: function (event) {
 			    event.target.classList.add('drop-active');
 			  },
@@ -39,14 +47,32 @@ module.exports = {
 		    var draggableElement = event.relatedTarget,
 		        dropzoneElement = event.target;
 		    dropzoneElement.classList.add('drop-target');
+				draggableElement.classList.add('can-drop');
 		  },
 
 		  ondragleave: function (event) {
 		    event.target.classList.remove('drop-target');
+				event.relatedTarget.classList.remove('can-drop');
 		  },
 
 		  ondrop: function (event) {
-		    event.relatedTarget.textContent = 'Dropped';
+				event.relatedTarget.removeAttribute('data-x');
+				event.relatedTarget.removeAttribute('data-y');
+				event.relatedTarget.removeAttribute('style');
+				event.target.appendChild(event.relatedTarget);
+				var childEl = event.relatedTarget;
+				var parentDiv = event.target;
+				var parentId = parentDiv.id;
+				var childLabel = childEl.children;
+				var label = childLabel[1];
+				 if (parentId === 'completed'){
+					 label.innerHTML = "Done";
+					 label.style.backgroundColor = '#99ff33';
+			 		}
+					else {
+						label.innerHTML = "Pending";
+						label.style.backgroundColor = '#ffd27f';
+					}
 		  },
 
 		  ondropdeactivate: function (event) {
@@ -55,3 +81,5 @@ module.exports = {
 		  }
 		})
 };
+
+window.dragMoveListener = dragMoveListener;
