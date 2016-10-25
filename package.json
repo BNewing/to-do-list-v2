@@ -39,6 +39,7 @@
     "concurrently": "^2.0.0",
     "css-loader": "^0.25.0",
     "express": "^4.13.4",
+    "interact.js": "^1.2.6",
     "jasmine": "^2.5.1",
     "jasmine-core": "^2.5.1",
     "jasmine-webpack-plugin": "^0.1.1",

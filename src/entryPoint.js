@@ -5,7 +5,6 @@ var pendingIdAssigner = elementIdAssigner * 1000;
 var elementIdAssigner = localStorage.getItem("itemsCounter")
 
 
-var mouseDragAndDrop = require('./mouseDragAndDrop.js');
 var touchDragAndDrop = require('./touchDragAndDrop.js');
 
 
@@ -38,6 +37,7 @@ function createListItem(elementId){
 	var textInput = document.getElementById("listItem").value;
 	listItemTag = document.createElement("li");
 	listItemTag.setAttribute("class", "item");
+	listItemTag.setAttribute("class", "draggable");
 	createListItemDeleteButton(elementId, listItemTag);
 	createListItemStatusLabel(elementId, listItemTag);
 	var listItemNode = document.createTextNode(textInput);
@@ -45,7 +45,6 @@ function createListItem(elementId){
 	listItemTag.appendChild(listItemNode);
 	listItemTag.setAttribute("id", elementId);
 	unorderedList.appendChild(listItemTag);
-	touchDragAndDrop.enableDragFunctionality(listItemTag);
 }
 
 function createListItemDeleteButton(elementId, listItemTag) {
@@ -78,7 +77,7 @@ function changeStatus(){
 		document.getElementById(this.id).innerHTML = "Done";
 		document.getElementById(this.id).style.backgroundColor = '#99ff33';
 		var item = document.getElementById(this.id).parentElement;
-		document.getElementById('div3').appendChild(item);
+		document.getElementById('completed').appendChild(item);
 	}
 	else{
 		document.getElementById(this.id).innerHTML = "Pending";
@@ -90,5 +89,3 @@ function changeStatus(){
 
 
 window.checkIfContent = checkIfContent;
-window.drop = mouseDragAndDrop.drop;
-window.allowDrop = mouseDragAndDrop.allowDrop;
