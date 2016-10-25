@@ -28,7 +28,6 @@ module.exports = {
 
 				onend: function (event) {
 					var textEl = event.target.querySelector('p');
-
 					textEl && (textEl.textContent =
 						'moved a distance of '
 						+ (Math.sqrt(event.dx * event.dx +
