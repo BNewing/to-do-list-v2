@@ -37,7 +37,7 @@ module.exports = {
 
 		dropzone: interact('.dropzone').dropzone({
 				accept: '.draggable',
-			  overlap: 0.75,
+			  overlap: 0.25,
 			  ondropactivate: function (event) {
 			    event.target.classList.add('drop-active');
 			  },
