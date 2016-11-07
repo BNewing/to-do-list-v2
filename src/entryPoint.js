@@ -37,6 +37,7 @@ function createListItem(elementId){
 	var textInput = document.getElementById("listItem").value;
 	listItemTag = document.createElement("li");
 	listItemTag.setAttribute("class", "item");
+	listItemTag.setAttribute("class", "half");
 	listItemTag.setAttribute("class", "draggable");
 	createListItemDeleteButton(elementId, listItemTag);
 	createListItemStatusLabel(elementId, listItemTag);

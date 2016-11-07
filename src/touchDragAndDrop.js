@@ -1,6 +1,5 @@
 var interact =require('interact.js');
 
-
 var dragMoveListener = function (event) {
 	var target = event.target,
 			x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
@@ -80,5 +79,6 @@ module.exports = {
 		  }
 		})
 };
+
 
 window.dragMoveListener = dragMoveListener;
