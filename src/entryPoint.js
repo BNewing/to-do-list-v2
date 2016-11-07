@@ -76,7 +76,7 @@ function changeStatus(){
 	var content = document.getElementById(this.id).innerHTML;
 	if(content === "Pending"){
 		document.getElementById(this.id).innerHTML = "Done";
-		document.getElementById(this.id).style.backgroundColor = '#99ff33';
+		document.getElementById(this.id).style.backgroundColor = '#BCED91';
 		var item = document.getElementById(this.id).parentElement;
 		document.getElementById('completed').appendChild(item);
 	}
