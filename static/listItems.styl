@@ -2,6 +2,16 @@ smallerDevices = 'screen and (max-width: 815px)'
 
 ul
 	padding-left:0
+	float: center
+	width: 40%
+	margin: 1.6%
+	padding: 1%
+	padding-bottom: 1%
+	@media smallerDevices
+		padding-bottom: 15px
+		margin-left: 5%
+		margin-right: 5%
+		width: 90%
 
 li
 	color: textColor
@@ -18,12 +28,19 @@ li
 	position: relative
 	overflow: auto
 	margin: 20px
+	width: 80%
+
+div.li
+	width: auto
+	position: relative
 
 button
 	float: right
 	margin: 5px
   top: 2px
   right: 2px
+	background-color: white
+	border-radius: 25px
 	@media smallerDevices
 		padding-top: 5px
 		padding-bottom: 5px
