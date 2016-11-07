@@ -84,7 +84,7 @@ function changeStatus(){
 		document.getElementById(this.id).innerHTML = "Pending";
 		document.getElementById(this.id).style.backgroundColor = '#ffd27f';
 		var item = document.getElementById(this.id).parentElement;
-		document.getElementById('div4').appendChild(item);
+		document.getElementById('pending').appendChild(item);
 	}
 }
 
