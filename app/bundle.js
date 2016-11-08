@@ -83,6 +83,7 @@
 		var textInput = document.getElementById("listItem").value;
 		listItemTag = document.createElement("li");
 		listItemTag.setAttribute("class", "item");
+		listItemTag.setAttribute("class", "half");
 		listItemTag.setAttribute("class", "draggable");
 		createListItemDeleteButton(elementId, listItemTag);
 		createListItemStatusLabel(elementId, listItemTag);
@@ -121,7 +122,7 @@
 		var content = document.getElementById(this.id).innerHTML;
 		if(content === "Pending"){
 			document.getElementById(this.id).innerHTML = "Done";
-			document.getElementById(this.id).style.backgroundColor = '#99ff33';
+			document.getElementById(this.id).style.backgroundColor = '#BCED91';
 			var item = document.getElementById(this.id).parentElement;
 			document.getElementById('completed').appendChild(item);
 		}
@@ -129,7 +130,7 @@
 			document.getElementById(this.id).innerHTML = "Pending";
 			document.getElementById(this.id).style.backgroundColor = '#ffd27f';
 			var item = document.getElementById(this.id).parentElement;
-			document.getElementById('div4').appendChild(item);
+			document.getElementById('pending').appendChild(item);
 		}
 	}
 
@@ -172,7 +173,7 @@
 
 
 	// module
-	exports.push([module.id, "body {\n  margin: 25px;\n  background-color: #fffccc;\n  font-family: tahoma;\n}\nh2,\nh4 {\n  color: #8b1c62;\n  letter-spacing: 1.5px;\n  line-height: 1.5;\n  border-bottom: solid 1px #8b1c62;\n}\nh5 {\n  color: #8b1c62;\n  letter-spacing: 1.5px;\n  line-height: 1;\n  text-transform: uppercase;\n  border-bottom: solid 1px #8b1c62;\n}\np {\n  color: #555;\n  letter-spacing: 0.25px;\n  line-height: 1.5;\n}\n@media (max-width: 815px) {\n  h5 {\n    line-height: 1.5;\n  }\n  p {\n    text-align: left;\n  }\n}\nform {\n  color: #555;\n  letter-spacing: 0.25px;\n  line-height: 1.5;\n}\ninput {\n  border: solid 1px #000;\n}\nul {\n  padding-left: 0;\n}\nli {\n  color: #555;\n  line-height: 3/2;\n  background-color: #bf5fff;\n  border-radius: 5px;\n  border: solid 1px #000;\n  height: auto;\n  list-style-type: none;\n  padding-left: 20px;\n  padding-top: 10px;\n  padding-bottom: 10px;\n  padding-right: 20px;\n  position: relative;\n  overflow: auto;\n  margin: 20px;\n}\nbutton {\n  float: right;\n  margin: 5px;\n}\n@media screen and (max-width: 815px) {\n  top: 2px,\n  right: 2px {\n    padding-top: 5px;\n    padding-bottom: 5px;\n  }\n}\nlabel {\n  float: right;\n  background: #ffd27f;\n  border-radius: 5px;\n  border: solid 1px #000;\n  top: 5px;\n  right: 35px;\n  padding: 2px;\n  z-index: 1;\n}\ndiv.third {\n  float: left;\n  width: 27.5%;\n  margin: 1.6%;\n  padding: 1%;\n  padding-bottom: 1%;\n}\n@media screen and (max-width: 815px) {\n  div.third {\n    padding-bottom: 15px;\n    margin-left: 5%;\n    margin-right: 5%;\n    width: 90%;\n  }\n}\ndiv.itemContainer {\n  background-color: #d3d3d3;\n  padding-bottom: 100px;\n  border: dotted 2px #000;\n  border-radius: 5px;\n}\ndiv.links {\n  float: left;\n  width: 45%;\n  border-radius: 25px;\n  border: solid 1px #000;\n  background-color: #fbf;\n  padding: 1%;\n  margin: 1%;\n}\ndiv.homepageLinks {\n  float: center;\n  width: 95%;\n  border-radius: 25px;\n  border: solid 1px #000;\n  background-color: #eaadea;\n  padding: 1%;\n  margin: 1%;\n}\ndiv.topthird {\n  float: left;\n  width: 27.5%;\n  margin: 1.6%;\n  padding: 1%;\n  border: dotted 1px;\n  border-radius: 25px;\n  padding-bottom: 1%;\n  background-color: #ee82ee;\n}\n@media screen and (max-width: 815px) {\n  div.topthird {\n    padding: 10px;\n    float: center;\n    width: 90%;\n    margin: 25px;\n  }\n}\n", ""]);
+	exports.push([module.id, "body {\n  margin: 25px;\n  background-color: #fff0f5;\n  font-family: tahoma;\n}\nh2,\nh4 {\n  color: #2e0854;\n  letter-spacing: 1.5px;\n  line-height: 1.5;\n  border-bottom: solid 1px #2e0854;\n}\nh5 {\n  color: #2e0854;\n  letter-spacing: 1.5px;\n  line-height: 1;\n  text-transform: uppercase;\n  border-bottom: solid 1px #2e0854;\n}\np {\n  color: #555;\n  letter-spacing: 0.25px;\n  line-height: 1.5;\n}\na {\n  color: #2e0854;\n  font-weight: bold;\n  text-decoration: none;\n  display: inline-block;\n}\n@media (max-width: 815px) {\n  h5 {\n    line-height: 1.5;\n  }\n  p {\n    text-align: left;\n  }\n}\nform {\n  color: #555;\n  letter-spacing: 0.25px;\n  line-height: 1.5;\n  text-align: center;\n}\ninput {\n  border: solid 1px #000;\n  height: 30px;\n  width: 200px;\n  border-radius: 50px;\n  background-color: #cc3299;\n  font-size: 16px;\n  margin: 10px;\n}\ninput#listItem {\n  background-color: #fff;\n  width: 300px;\n  padding-left: 10px;\n}\nul {\n  padding-left: 0;\n  float: center;\n  width: 40%;\n  margin: 1.6%;\n  margin: auto;\n  padding: 1%;\n  padding-bottom: 1%;\n}\n@media screen and (max-width: 815px) {\n  ul {\n    padding-bottom: 15px;\n    margin-left: 5%;\n    margin-right: 5%;\n    width: 90%;\n  }\n}\nli {\n  color: #555;\n  line-height: 3/2;\n  background-color: #bf5fff;\n  border-radius: 5px;\n  border: solid 1px #000;\n  height: auto;\n  list-style-type: none;\n  padding-left: 20px;\n  padding-top: 10px;\n  padding-bottom: 10px;\n  padding-right: 20px;\n  position: relative;\n  overflow: auto;\n  margin: 20px;\n  width: 80%;\n}\ndiv.li {\n  width: auto;\n  position: relative;\n}\nbutton {\n  float: right;\n  margin: 5px;\n}\ntop: 2px,\nright: 2px {\n  background-color: #fff;\n  border-radius: 25px;\n}\n@media screen and (max-width: 815px) {\n  top: 2px,\n  right: 2px {\n    padding-top: 5px;\n    padding-bottom: 5px;\n  }\n}\nlabel {\n  float: right;\n  background: #ffd27f;\n  border-radius: 5px;\n  border: solid 1px #000;\n  top: 5px;\n  right: 35px;\n  padding: 2px;\n  z-index: 1;\n}\ndiv.half {\n  float: left;\n  width: 44%;\n  margin: 1.6%;\n  padding: 1%;\n  padding-bottom: 1%;\n}\n@media screen and (max-width: 815px) {\n  div.half {\n    padding-bottom: 15px;\n    margin-left: 5%;\n    margin-right: 5%;\n    width: 90%;\n  }\n}\ndiv.itemContainer {\n  background-color: #d3d3d3;\n  padding-bottom: 100px;\n  border: dotted 2px #000;\n  border-radius: 5px;\n}\ndiv.homepageLinks {\n  border-radius: 25px;\n  border: solid 1px #000;\n  background-color: #eaadea;\n  padding: 25px;\n}\ndiv.topthird {\n  float: left;\n  width: 27.5%;\n  padding: 1%;\n  margin: 1%;\n  border: dotted 1px;\n  border-radius: 25px;\n  padding-bottom: 1%;\n  background-color: #eaadea;\n  margin: 10px;\n}\n@media screen and (max-width: 815px) {\n  div.topthird {\n    padding: 10px;\n    float: center;\n    width: 90%;\n    margin-bottom: 25px;\n  }\n}\ndiv.links {\n  float: left;\n  width: 43%;\n  border-radius: 25px;\n  border: solid 1px #000;\n  background-color: #bf5fff;\n  padding: 1%;\n  margin: 1%;\n  text-align: center;\n}\n", ""]);
 
 	// exports
 
@@ -491,7 +492,6 @@
 
 	var interact =__webpack_require__(6);
 
-
 	var dragMoveListener = function (event) {
 		var target = event.target,
 				x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
@@ -528,7 +528,7 @@
 
 			dropzone: interact('.dropzone').dropzone({
 					accept: '.draggable',
-				  overlap: 0.75,
+				  overlap: 0.25,
 				  ondropactivate: function (event) {
 				    event.target.classList.add('drop-active');
 				  },
@@ -571,6 +571,7 @@
 			  }
 			})
 	};
+
 
 	window.dragMoveListener = dragMoveListener;
 
