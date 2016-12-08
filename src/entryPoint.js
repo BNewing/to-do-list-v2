@@ -6,9 +6,8 @@ var pendingIdAssigner = elementIdAssigner * 1000;
 var elementIdAssigner = localStorage.getItem("itemsCounter")
 
 
-function checkIfContent(){
-	var textInput = document.getElementById("listItem").value;
-	if(textInput === ""){
+function checkIfContent(listItem){
+	if(listItem === ""){
 		document.getElementById('emptyFieldAlert').innerHTML = "You need to type something into the box first!";
 	}
 	else{
