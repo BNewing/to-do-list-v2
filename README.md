@@ -1,4 +1,5 @@
 # To-do-list
+
 This is basic "to do list"!
 
 View the project here:
@@ -22,6 +23,7 @@ View the project here:
 <img src="./assets/screenshot.png" alt="screenshot">
 
 ## Technologies Used
+
 - HTML
 - Stylus
 - JavaScript
@@ -57,6 +59,7 @@ The local host will be at localhost:8080. Then, follow the steps listed here:
 [https://help.github.com/articles/creating-a-pull-request-from-a-fork/](https://help.github.com/articles/creating-a-pull-request-from-a-fork/) to create the pull request.
 
 ## Change Log
+
 This repo is version two. Version two has an improved organisation structure and also has touch screen functionality.
 
 Version one can be found here:
