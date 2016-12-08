@@ -1,5 +1,7 @@
 var css = require('../static/main.styl')
 var touchDragAndDrop = require('./touchDragAndDrop.js');
+//this wants changing to a constant
+var listItemLimit = 2;
 
 localStorage.setItem("itemsCounter", 0);
 var pendingIdAssigner = elementIdAssigner * 1000;
@@ -18,17 +20,16 @@ function checkIfContent(listItem){
 	}
 }
 
-
-function collectContent(){
+function collectContent(listItem){
 	var length = document.getElementsByTagName("button").length;
-	if(length <=9) {
+	if(length < listItemLimit) {
 		elementIdAssigner++;
 		createListItem(elementIdAssigner);
 		localStorage.setItem("itemsCounter", elementIdAssigner);
 		document.getElementById("itemEntry").reset();
 	}
 	else{
-		alert("You've already got ten on the list");
+		alert("You've already got " + listItemLimit + " on the list");
 	}
 }
 

@@ -45,18 +45,18 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var css = __webpack_require__(1)
+	var touchDragAndDrop = __webpack_require__(5);
+	var listItemLimit = 2;
 
 	localStorage.setItem("itemsCounter", 0);
 	var pendingIdAssigner = elementIdAssigner * 1000;
 	var elementIdAssigner = localStorage.getItem("itemsCounter")
 
 
-	var touchDragAndDrop = __webpack_require__(5);
-
-
-	function checkIfContent(){
-		var textInput = document.getElementById("listItem").value;
-		if(textInput === ""){
+	// functions that influence the display want putting elsewhere in another layer
+	// keep core logic in the same place
+	function checkIfContent(listItem){
+		if(listItem === ""){
 			document.getElementById('emptyFieldAlert').innerHTML = "You need to type something into the box first!";
 		}
 		else{
@@ -66,9 +66,9 @@
 	}
 
 
-	function collectContent(){
+	function collectContent(listItem){
 		var length = document.getElementsByTagName("button").length;
-		if(length <=9) {
+		if(length <= listItemLimit) {
 			elementIdAssigner++;
 			createListItem(elementIdAssigner);
 			localStorage.setItem("itemsCounter", elementIdAssigner);
