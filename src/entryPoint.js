@@ -6,6 +6,8 @@ var pendingIdAssigner = elementIdAssigner * 1000;
 var elementIdAssigner = localStorage.getItem("itemsCounter")
 
 
+// functions that influence the display want putting elsewhere in another layer
+// keep core logic in the same place
 function checkIfContent(listItem){
 	if(listItem === ""){
 		document.getElementById('emptyFieldAlert').innerHTML = "You need to type something into the box first!";
