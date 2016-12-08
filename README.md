@@ -1,6 +1,6 @@
-# To-do-list
+# To-do-list-v2
 
-This is basic "to do list"!
+This is a basic "to do list"!
 
 View the project here:
 
@@ -46,22 +46,24 @@ You can either raise an issue in the tab, or create a pull request to address th
 
 To do the latter, firstly, fork the branch, and then clone this into your GitHub folder (or wherever else you store your GitHub projects).
 
-After you've created any changes, to compile it, you'll need to run:
+After you've made any changes, to compile it, you'll need to run:
 
 `npm run webpack`
 
-To run the local dev server to see changes you've made, you'll need run:
+To see changes you've made, you'll need run:
 
 `npm start`
 
-The local host will be at localhost:8080. Then, follow the steps listed here:
+The local host will be at http://localhost:8080. Then, follow the steps listed here:
 
-[https://help.github.com/articles/creating-a-pull-request-from-a-fork/](https://help.github.com/articles/creating-a-pull-request-from-a-fork/) to create the pull request.
+[https://help.github.com/articles/creating-a-pull-request-from-a-fork/](https://help.github.com/articles/creating-a-pull-request-from-a-fork/) 
+
+to create the pull request.
 
 ## Change Log
 
-This repo is version two. Version two has an improved organisation structure and also has touch screen functionality.
+This repo is Version 2. Version 2 has an improved organisation structure and touch screen functionality.
 
-Version one can be found here:
+Version 1 can be found here:
 
 [https://github.com/BNewing/to-do-list](https://github.com/BNewing/to-do-list)
