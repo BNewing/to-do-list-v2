@@ -10,7 +10,7 @@ View the project here:
 
 - You can only add in 10 list items - intentional cap so your list doesn't get too long!
 - You can drag and drop list items into the two different lists
-- It works on touch devices
+- Fully functional on touch devices
 - The design is mobile responsive
 - Clicking on status label changes which list the item is in
 - Empty list items can't be created
