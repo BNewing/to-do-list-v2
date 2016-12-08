@@ -1,11 +1,9 @@
 var css = require('../static/main.styl')
+var touchDragAndDrop = require('./touchDragAndDrop.js');
 
 localStorage.setItem("itemsCounter", 0);
 var pendingIdAssigner = elementIdAssigner * 1000;
 var elementIdAssigner = localStorage.getItem("itemsCounter")
-
-
-var touchDragAndDrop = require('./touchDragAndDrop.js');
 
 
 function checkIfContent(){
