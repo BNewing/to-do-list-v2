@@ -48,7 +48,7 @@ To do the latter, firstly, fork the branch, and then clone this into your GitHub
 
 After you've made any changes, to compile it, you'll need to run:
 
-`npm run webpack`
+`npm run compile`
 
 To see changes you've made, you'll need run:
 
