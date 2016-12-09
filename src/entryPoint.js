@@ -1,8 +1,9 @@
 var css = require('../static/main.styl')
 var touchDragAndDrop = require('./touchDragAndDrop.js');
-//this wants changing to a constant
+//this below var wants changing to a constant
 var listItemLimit = 2;
 
+// Need to move away from this id concept
 localStorage.setItem("itemsCounter", 0);
 var pendingIdAssigner = elementIdAssigner * 1000;
 var elementIdAssigner = localStorage.getItem("itemsCounter")
@@ -11,38 +12,38 @@ var elementIdAssigner = localStorage.getItem("itemsCounter")
 // functions that influence the display want putting elsewhere in another layer
 // keep core logic in the same place
 function checkIfContent(listItem){
+  var listItem = document.getElementById("listItem").value;
 	if(listItem === ""){
 		document.getElementById('emptyFieldAlert').innerHTML = "You need to type something into the box first!";
 	}
 	else{
 		document.getElementById('emptyFieldAlert').innerHTML = "";
-		collectContent();
+		checkNumberOfExistingItems(listItem);
 	}
 }
 
-function collectContent(listItem){
+function checkNumberOfExistingItems(listItem){
 	var length = document.getElementsByTagName("button").length;
 	if(length < listItemLimit) {
 		elementIdAssigner++;
-		createListItem(elementIdAssigner);
 		localStorage.setItem("itemsCounter", elementIdAssigner);
-		document.getElementById("itemEntry").reset();
+		form.reset();
+		createListItemElement(listItem, elementIdAssigner);
 	}
 	else{
 		alert("You've already got " + listItemLimit + " on the list");
 	}
 }
 
-function createListItem(elementId){
-	var textInput = document.getElementById("listItem").value;
+function createListItemElement(listItem, elementId){
+	var listItemNode = document.createTextNode(listItem);
+	var unorderedList = document.getElementById("list");
 	listItemTag = document.createElement("li");
 	listItemTag.setAttribute("class", "item");
 	listItemTag.setAttribute("class", "half");
 	listItemTag.setAttribute("class", "draggable");
 	createListItemDeleteButton(elementId, listItemTag);
 	createListItemStatusLabel(elementId, listItemTag);
-	var listItemNode = document.createTextNode(textInput);
-	var unorderedList = document.getElementById("list");
 	listItemTag.appendChild(listItemNode);
 	listItemTag.setAttribute("id", elementId);
 	unorderedList.appendChild(listItemTag);
@@ -66,12 +67,13 @@ function createListItemStatusLabel(elementId, listItemTag){
 	pendingLabel.onclick = changeStatus;
 }
 
-
+// functions that happen on button clicks
 function deleteItem(){
 	var child = document.getElementById(this.id).parentElement;
 	child.parentNode.removeChild(child);
 }
 
+//UI stuff mixed in with logic - bad!
 function changeStatus(){
 	var content = document.getElementById(this.id).innerHTML;
 	if(content === "Pending"){

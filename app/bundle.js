@@ -46,6 +46,7 @@
 
 	var css = __webpack_require__(1)
 	var touchDragAndDrop = __webpack_require__(5);
+	//this wants changing to a constant
 	var listItemLimit = 2;
 
 	localStorage.setItem("itemsCounter", 0);
@@ -65,30 +66,33 @@
 		}
 	}
 
-
-	function collectContent(listItem){
+	function checkNumberOfExistingItems(listItem){
 		var length = document.getElementsByTagName("button").length;
-		if(length <= listItemLimit) {
+		if(length < listItemLimit) {
 			elementIdAssigner++;
-			createListItem(elementIdAssigner);
 			localStorage.setItem("itemsCounter", elementIdAssigner);
-			document.getElementById("itemEntry").reset();
+			form.reset();
+			createListItem(elementIdAssigner);
 		}
 		else{
-			alert("You've already got ten on the list");
+			alert("You've already got " + listItemLimit + " on the list");
 		}
 	}
 
-	function createListItem(elementId){
+	function createListItem(elementId) {
+		createListItemElement(elementId);
+	}
+
+	function createListItemElement(elementId){
 		var textInput = document.getElementById("listItem").value;
+		var listItemNode = document.createTextNode(textInput);
+		var unorderedList = document.getElementById("list");
 		listItemTag = document.createElement("li");
 		listItemTag.setAttribute("class", "item");
 		listItemTag.setAttribute("class", "half");
 		listItemTag.setAttribute("class", "draggable");
 		createListItemDeleteButton(elementId, listItemTag);
 		createListItemStatusLabel(elementId, listItemTag);
-		var listItemNode = document.createTextNode(textInput);
-		var unorderedList = document.getElementById("list");
 		listItemTag.appendChild(listItemNode);
 		listItemTag.setAttribute("id", elementId);
 		unorderedList.appendChild(listItemTag);
@@ -118,6 +122,7 @@
 		child.parentNode.removeChild(child);
 	}
 
+	//UI stuff mixed in with logic - bad!
 	function changeStatus(){
 		var content = document.getElementById(this.id).innerHTML;
 		if(content === "Pending"){
