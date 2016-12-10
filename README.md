@@ -7,11 +7,6 @@ You can view the project here:
 [https://bnewing.github.io/to-do-list-v2](https://bnewing.github.io/to-do-list-v2)
 
 
-## What the Project Looks Like
-
-<img src="./assets/screenshot.png" alt="screenshot">
-
-
 ## What the Project Does
 
 - You can only add in 10 list items - intentional cap so your list doesn't get too long!
@@ -60,6 +55,7 @@ The local host will be at http://localhost:8080. Then, follow the steps listed h
 
 to create the pull request.
 
+
 ## Change Log
 
 This repo is Version 2. Version 2 has an improved organisation structure and touch screen functionality.
@@ -67,3 +63,9 @@ This repo is Version 2. Version 2 has an improved organisation structure and tou
 Version 1 can be found here:
 
 [https://github.com/BNewing/to-do-list](https://github.com/BNewing/to-do-list)
+
+
+## What the Project Looks Like
+
+<img src="./assets/screenshot.png" alt="screenshot">
+
