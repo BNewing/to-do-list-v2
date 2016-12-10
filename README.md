@@ -1,10 +1,16 @@
 # To-do-list-v2
 
-This is a basic "to do list"!
+This is a basic "to do list" web app! It's something that I created whilst starting out with JavaScript, as a learning exercise. 
 
-View the project here:
+You can view the project here:
 
 [https://bnewing.github.io/to-do-list-v2](https://bnewing.github.io/to-do-list-v2)
+
+
+## What the Project Looks Like
+
+<img src="./assets/screenshot.png" alt="screenshot">
+
 
 ## What the Project Does
 
@@ -15,12 +21,6 @@ View the project here:
 - Clicking on status label changes which list the item is in
 - Empty list items can't be created
 - List items are stored within the browser (lost after tab is closed)
-
-View the project here:
-
-[https://bnewing.github.io/to-do-list-v2](https://bnewing.github.io/to-do-list-v2)
-
-<img src="./assets/screenshot.png" alt="screenshot">
 
 ## Technologies Used
 
