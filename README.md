@@ -7,7 +7,7 @@ You can view the project here:
 [https://bnewing.github.io/to-do-list-v2](https://bnewing.github.io/to-do-list-v2)
 
 
-## What the Project Does
+## 1. What the Project Does
 
 - You can only add in 10 list items - intentional cap so your list doesn't get too long!
 - You can drag and drop list items into the two different lists
@@ -17,7 +17,7 @@ You can view the project here:
 - Empty list items can't be created
 - List items are stored within the browser (lost after tab is closed)
 
-## Technologies Used
+## 2. Technologies Used
 
 - HTML
 - Stylus
@@ -26,7 +26,7 @@ You can view the project here:
 - Webpack
 
 
-## How to Set Up the Dev Environment
+## 3. How to Set Up the Dev Environment
 
 After cloning this, you'll need to run:
 
@@ -35,7 +35,7 @@ After cloning this, you'll need to run:
 This will install all of the dependencies that you need.
 
 
-## How to Suggest a Change
+## 4. How to Suggest a Change
 
 You can either raise an issue in the tab, or create a pull request to address the issue!
 
@@ -56,7 +56,7 @@ The local host will be at http://localhost:8080. Then, follow the steps listed h
 to create the pull request.
 
 
-## Change Log
+## 5. Change Log
 
 This repo is Version 2. Version 2 has an improved organisation structure and touch screen functionality.
 
@@ -65,7 +65,7 @@ Version 1 can be found here:
 [https://github.com/BNewing/to-do-list](https://github.com/BNewing/to-do-list)
 
 
-## What the Project Looks Like
+## 6. What the Project Looks Like
 
 <img src="./assets/screenshot.png" alt="screenshot">
 
