@@ -1,6 +1,6 @@
 # To-do-list-v2
 
-This is a basic "to do list" web app! It's something that I created whilst starting out with JavaScript, as a learning exercise. 
+This is a basic "to do list" web app! I worked on it whilst an intern at Zooniverse as a way of practising my JavaScript. It was intended as a learning exercise.
 
 You can view the project here:
 
