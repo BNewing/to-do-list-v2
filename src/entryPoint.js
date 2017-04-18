@@ -1,12 +1,11 @@
 var css = require('../static/main.styl')
+var touchDragAndDrop = require('./touchDragAndDrop.js');
+var status = require('./changeStatus.js');
 
 localStorage.setItem("itemsCounter", 0);
+
 var pendingIdAssigner = elementIdAssigner * 1000;
 var elementIdAssigner = localStorage.getItem("itemsCounter")
-
-
-var touchDragAndDrop = require('./touchDragAndDrop.js');
-
 
 function checkIfContent(){
 	var textInput = document.getElementById("listItem").value;
@@ -63,29 +62,13 @@ function createListItemStatusLabel(elementId, listItemTag){
 	pendingLabel.appendChild(labelText);
 	pendingLabel.setAttribute("id", elementId*100000)
 	listItemTag.appendChild(pendingLabel);
-	pendingLabel.onclick = changeStatus;
+	pendingLabel.onclick = status.changeStatus;
 }
 
 
 function deleteItem(){
 	var child = document.getElementById(this.id).parentElement;
 	child.parentNode.removeChild(child);
-}
-
-function changeStatus(){
-	var content = document.getElementById(this.id).innerHTML;
-	if(content === "Pending"){
-		document.getElementById(this.id).innerHTML = "Done";
-		document.getElementById(this.id).style.backgroundColor = '#BCED91';
-		var item = document.getElementById(this.id).parentElement;
-		document.getElementById('completed').appendChild(item);
-	}
-	else{
-		document.getElementById(this.id).innerHTML = "Pending";
-		document.getElementById(this.id).style.backgroundColor = '#ffd27f';
-		var item = document.getElementById(this.id).parentElement;
-		document.getElementById('pending').appendChild(item);
-	}
 }
 
 
